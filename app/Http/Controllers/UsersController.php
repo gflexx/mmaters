@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,8 +30,11 @@ class UsersController extends Controller
         ]);
     }
 
-    public function edit()
+    public function edit($user)
     {
-        return view('profile.edit');
+        $usr = User::findOrFail($user);
+        return view('profile.edit', [
+            'user' => $usr
+        ]);
     }
 }

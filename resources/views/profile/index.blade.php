@@ -19,7 +19,7 @@
                     <p>Email: <span class="text-muted">{{ auth()->user()->email }}</span></p>
                     <p>Joined: <span class="text-muted">{{ auth()->user()->created_at }}</span></p> 
 
-                    <a href="{{ route('profile_edit') }}" class="btn btn-info">Update Details</a>
+                    <a href="{{ route('profile_edit', auth()->user()->id) }}" class="btn btn-info">Update Details</a>
                 </div>
                 <div class="py-2 posts mt-4">
                     <h5>Posts:</h5>

@@ -82,4 +82,4 @@ Route::post('register/admin/create', [RegisterController::class, 'create_admin']
 
 Route::get('profile/', [UsersController::class, 'index'])-> name('profile');
 
-Route::get('profile/edit', [UsersController::class, 'edit'])-> name('profile_edit');
+Route::get('profile/edit/{id}', [UsersController::class, 'edit'])-> name('profile_edit');
