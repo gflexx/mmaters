@@ -14,7 +14,7 @@
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="username">Email</label>
+                    <label for="username">Username</label>
                     <input type="text" name="username" placeholder="user_name" id="username" class="form-control" value="{{ old('username') }}" required>
                     @error('username')
                         <p class="text-muted">{{ $message }}</p>

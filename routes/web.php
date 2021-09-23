@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UsersController;
 use App\Models\Category;
@@ -58,6 +60,18 @@ Route::post('categories/save', [CategoryController::class, 'save'])->name('save_
 
 Route::get('categories/show/{id}', [CategoryController::class, 'show'])->name('show_category');
 
+
+// quiz routes
+
+Route::get('quiz/', [QuestionsController::class, 'index'])->name('get_quiz');
+
+
+// chat routes
+Route::get('chats/', [ChatController::class, 'index'])->name('show_chats');
+
+Route::get('chat/specialist/{id}', [ChatController::class, 'show_chat'])->name('show_chat')->middleware('auth');
+
+Route::post('chat/save', [ChatController::class, 'save_message'])->name('save_message');
 
 
 // user related routes

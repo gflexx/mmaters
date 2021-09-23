@@ -53,4 +53,15 @@ class User extends Authenticatable
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+
+    // make messages available to user
+    public function sent_messages()
+    {
+        return $this->hasMany(Message::class, 'sender_id');
+    }
+
+    public function received_messages()
+    {
+        return $this->hasMany(Message::class, 'receiver_id');
+    }
 }

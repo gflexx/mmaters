@@ -35,8 +35,8 @@ class CategoryController extends Controller
 
         // create object
         Category::create([
-            'title'=>$title,
-            'description'=>$description
+            'title' => $title,
+            'description' => $description
         ]);
 
         return redirect('profile');

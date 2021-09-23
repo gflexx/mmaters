@@ -16,14 +16,11 @@
     </div>
 
     <div class="mb-4 mt-3">
-        <h4 class="text-center">Have a Question that you need answered?</h4>
-        <div class="row justify-content-center">
-            <div class="col-9">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Enter Question" aria-label="Question" aria-describedby="button-addon2">
-                    <button class="btn btn-success" type="button" id="button-addon2">Search</button>
-                </div>
-            </div>
+        <h4 class="text-center">Need some mental health check?</h4>
+        <div class="text-center pt-3 pb-3 ">
+            <a href="{{ route('get_quiz') }}" class="btn btn-primary mb-3">Answer Mental Health Questions</a>
+            <h4>Or</h4>
+            <a href="{{ route('show_chats') }}" class="btn btn-success mt-3">Talk to a Specialist</a>
         </div>
     </div>
 

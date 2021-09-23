@@ -20,7 +20,6 @@ class UsersController extends Controller
     {
         $categories = Category::all();
         $usrId = auth()->user()->id;
-        $qs = DB::table('posts')->where('user_id', $usrId);
         $posts = Post::where('user_id', $usrId)->get();
         
 
