@@ -38,7 +38,7 @@ class PostsController extends Controller
         // get image name
         $imgName =  $request->file('img')->getClientOriginalName();
 
-        // save path and uploaded image 
+        // save path and uploaded image
         $imgPath = $request->file('img')->move('posts', $imgName);
 
         $title = $request->title;

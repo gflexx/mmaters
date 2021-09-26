@@ -26,6 +26,25 @@
         </div>
 
         <div class="messages">
+            @foreach($msgs as $msg)
+                <div  
+                    @if($msg->sender->id === $user->id)
+                     class="sender text-end"
+                    @else
+                     class="receiver text-start"
+                    @endif  
+                >
+                    <div class="message lh-1">
+                        <p class="mb-1">{{ $msg->message }}</p>
+                        <p class="mb-1"><small>{{ $msg->created_at->diffForHumans() }}</small></p>
+                        <span class="badge rounded-pill bg-primary msg-badge">me</span>
+                        <span style="clear: both;"></span>
+                        <span class="badge rounded-pill bg-secondary sender-badge">{{ $msg->receiver->username }}</span>
+                    </div>
+                </div>
+                <br class="mb-3">
+                
+            @endforeach
 
         </div>
     </div>

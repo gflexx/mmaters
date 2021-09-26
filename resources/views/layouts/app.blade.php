@@ -43,7 +43,7 @@
                             <a class="nav-link" href="{{ route('register') }}">Sign Up</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Log In</a>
+                            <a class="nav-link" href="{{ route('login') }}">Sign In</a>
                         </li>
                     @endif
                 </ul>

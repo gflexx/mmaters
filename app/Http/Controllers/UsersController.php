@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Message;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,17 +16,18 @@ class UsersController extends Controller
     {
         $this->middleware(['auth']);
     }
-    
+
     public function index()
     {
         $categories = Category::all();
         $usrId = auth()->user()->id;
         $posts = Post::where('user_id', $usrId)->get();
-        
+        $msgs = Message::where('receiver_id', $usrId)->get();
 
         return view('profile.index', [
             'categories' => $categories,
-            'posts' => $posts
+            'posts' => $posts,
+            'msgs' => $msgs
         ]);
     }
 
@@ -35,5 +37,31 @@ class UsersController extends Controller
         return view('profile.edit', [
             'user' => $usr
         ]);
+    }
+
+    public function save_edit(Request $request)
+    {
+        $data = $this->validate($request, [
+            'username' => 'required',
+            'email' => 'required'
+        ]);
+
+        if($request->image)
+        {
+            $imgName =  $request->file('image')->getClientOriginalName();
+
+            // save file to storage
+            $imgPath = $request->file('image')->move('avatars', $imgName);
+
+            // save image to array
+            $imgArr = ['image' => $imgName];
+        }
+
+        auth()->user()->update(array_merge(
+            $data,
+            $imgArr ?? []
+        ));
+
+        return redirect('profile');
     }
 }

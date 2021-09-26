@@ -13,7 +13,7 @@ class ChatController extends Controller
     {
         $speciliasts = User::where('is_specialist', 1)->get();
         return view('chat.index', [
-            'specialists' => $speciliasts
+            'specialists' => $speciliasts,
         ]);
     }
 
@@ -33,16 +33,19 @@ class ChatController extends Controller
             'message' => $text
         ]);
 
-        return redirect().route('show_chat', [$receiver_id]);
+        return redirect()->route('show_chat', ['id' => $receiver_id]);
     }
 
     public function show_chat($specialist)
     { 
         $user = Auth::user();
         $specialist = User::findOrFail($specialist);
+        $user_id = $user->id;
+        $msgs = Message::all();
         return view('chat.show', [
             'specialist' => $specialist,
-            'user' => $user
+            'user' => $user,
+            'msgs' => $msgs
         ]);
     }
 }

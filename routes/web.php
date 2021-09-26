@@ -67,6 +67,7 @@ Route::get('quiz/', [QuestionsController::class, 'index'])->name('get_quiz');
 
 
 // chat routes
+
 Route::get('chats/', [ChatController::class, 'index'])->name('show_chats');
 
 Route::get('chat/specialist/{id}', [ChatController::class, 'show_chat'])->name('show_chat')->middleware('auth');
@@ -96,4 +97,6 @@ Route::post('register/admin/create', [RegisterController::class, 'create_admin']
 
 Route::get('profile/', [UsersController::class, 'index'])-> name('profile');
 
-Route::get('profile/edit/{id}', [UsersController::class, 'edit'])-> name('profile_edit');
+Route::get('profile/edit/{id}', [UsersController::class, 'edit'])->name('profile_edit');
+
+Route::post('profile/edit/{id}/save', [UsersController::class, 'save_edit'])->name('save_edit');

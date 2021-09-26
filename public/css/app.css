@@ -31,3 +31,19 @@
     height: 90px;
     width: 90px;
 }
+/* chat page */
+.msg-badge{
+    display: none;
+}
+.sender-badge{
+    display: none;
+}
+.sender .msg-badge{
+    display: block;
+    float: right;
+    width: 3em;
+}
+.receiver .sender-badge{
+    display: flex;
+    width: 3em;
+}

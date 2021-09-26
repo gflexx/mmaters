@@ -4,10 +4,10 @@
 
 <div class="signup">
     <h4 class="text-center mb-5">User Details update</h4>
-    
+
     <div class="row justify-content-center">
         <div class="col-7 col-md-4 ">
-            <form action="{{ route('create_user') }}" method="POST">
+            <form action="{{ route('save_edit', $user) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="username">Username</label>
@@ -28,16 +28,16 @@
 
                 <div class="mb-3">
                     <label for="formFile" class="form-label">User Image</label>
-                    <input class="form-control" accept="image/*" value="{{ old('img') ?? asset('avatars/'.$user->image) }}" name="img" type="file" id="formFile">
-                    @error('img')
+                    <input class="form-control" accept="image/*" value="{{ old('image') ?? asset('avatars/'.$user->image) }}" name="image" type="file" id="formFile">
+                    @error('image')
                         <p class="text-muted">{{ $message }}</p>
                      @enderror
                 </div>
-                
+
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Update Details</button>
                 </div>
-                
+
             </form>
         </div>
     </div>

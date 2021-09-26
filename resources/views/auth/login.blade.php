@@ -20,7 +20,7 @@
                         <p class="text-muted">{{ $message }}</p>
                     @enderror
                 </div>
-                
+
 
                 <div class="mb-3">
                     <label for="pwd1">Password</label>
@@ -38,9 +38,9 @@
                 </div>
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
                 </div>
-                
+
             </form>
         </div>
     </div>
