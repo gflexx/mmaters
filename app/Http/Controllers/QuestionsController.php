@@ -15,8 +15,11 @@ class QuestionsController extends Controller
         ]);
     }
 
-    public function show_answer_posts()
+    public function showAnswers(Request $request)
     {
+        $category = $request->category;
+        $history = $request->history;
+        $historyDescr = $request->history_description;
         return view('questions.answers');
     }
 }

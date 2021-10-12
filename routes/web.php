@@ -65,6 +65,8 @@ Route::get('categories/show/{id}', [CategoryController::class, 'show'])->name('s
 
 Route::get('quiz/', [QuestionsController::class, 'index'])->name('get_quiz');
 
+Route::post('quiz/answers', [QuestionsController::class, 'showAnswers'])->name('show_answers');
+
 
 // chat routes
 

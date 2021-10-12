@@ -17,7 +17,6 @@
                     @enderror
                 </div>
 
-
                 <div class="mb-3">
                     <label for="mail">Email</label>
                     <input type="email" name="email" placeholder="eg@example.com" id="mail" class="form-control" value="{{ old('email') ?? $user->email }}" required>
