@@ -45,7 +45,7 @@ class CategoryController extends Controller
     public function show($category)
     {
         $category = Category::findOrFail($category);
-        $posts = Post::find($category);
+        $posts = $category->posts->all();
 
         return view('categories.show', [
             'category' => $category,

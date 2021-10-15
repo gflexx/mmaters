@@ -11,10 +11,20 @@
                     <img class="profile-pic" src="{{  asset('avatars/'.auth()->user()->image) }}" alt="">
                 </div>
                 <p class="text-center">{{ auth()->user()->email }}</p>
-                <a class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#chatCollapse" aria-expanded="false" aria-controls="chatCollapse"><i class="bi-envelope-fill"></i>    Chats</a>
-                <div class="collapse" id="chatCollapse">
+                <h5><i class="bi-envelope-fill"></i>    Chats:</h5>
+                <div class="mt-2">
                     <div class="card card-body">
+                        @foreach ($contacts as $contact)
+                        <div style="background-color: whitesmoke;" class="d-flex flex-row mb-2 p-2">
+                            <div>
+                                <img class="contact-image rounded-2" src="{{ asset('avatars/'.$contact->image) }}" alt="">
+                            </div>
+                            <div class="ms-4">
+                                <h6><a href="{{ route('show_chat', $contact->id) }}">{{ $contact->username }}</a></h6>
+                            </div>
 
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

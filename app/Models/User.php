@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Faker\Provider\ar_SA\Payment;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -63,5 +64,9 @@ class User extends Authenticatable
     public function received_messages()
     {
         return $this->hasMany(Message::class, 'receiver_id');
+    }
+
+    public function payments(){
+        return $this->hasMany(Payments::class, 'user_id');
     }
 }

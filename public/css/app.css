@@ -17,11 +17,17 @@
 .post-image{
     max-height: 36vh;
 }
+/* profile */
 .profile-pic{
     height: 144px;
     width: 144px;
     border-radius: 50%;
 }
+.contact-image{
+    height: 45px;
+    width: 45px;
+}
+/* chat */
 .specialist-pic{
     height: 81px;
     width: 81px;
@@ -41,9 +47,9 @@
 .sender .msg-badge{
     display: block;
     float: right;
-    width: 3em;
+    width: 5em;
 }
 .receiver .sender-badge{
     display: flex;
-    width: 3em;
+    width: 5em;
 }

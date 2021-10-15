@@ -27,12 +27,12 @@
 
         <div class="messages">
             @foreach($msgs as $msg)
-                <div  
+                <div
                     @if($msg->sender->id === $user->id)
                      class="sender text-end"
                     @else
                      class="receiver text-start"
-                    @endif  
+                    @endif
                 >
                     <div class="message lh-1">
                         <p class="mb-1">{{ $msg->message }}</p>
@@ -40,10 +40,11 @@
                         <span class="badge rounded-pill bg-primary msg-badge">me</span>
                         <span style="clear: both;"></span>
                         <span class="badge rounded-pill bg-secondary sender-badge">{{ $msg->receiver->username }}</span>
+                        <span style="clear: both;"></span>
                     </div>
                 </div>
-                <br class="mb-3">
-                
+                <br>
+
             @endforeach
 
         </div>

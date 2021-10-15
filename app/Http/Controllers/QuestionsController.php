@@ -20,6 +20,13 @@ class QuestionsController extends Controller
         $category = $request->category;
         $history = $request->history;
         $historyDescr = $request->history_description;
-        return view('questions.answers');
+        if ($category = Category::find($category)){
+            $posts = $category->posts->all();
+        } else{
+            $posts = 0;
+        }
+        return view('questions.answers', [
+            'posts' => $posts,
+        ]);
     }
 }

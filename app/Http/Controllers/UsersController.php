@@ -20,14 +20,36 @@ class UsersController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $usrId = auth()->user()->id;
+        $user = auth()->user();
+        $usrId = $user->id;
         $posts = Post::where('user_id', $usrId)->get();
-        $msgs = Message::where('receiver_id', $usrId)->get();
+
+        // get my messages, sent or received
+        $msgs = Message::where('receiver_id', $usrId)
+            ->orWhere('sender_id', $usrId)
+            ->get()
+            ->reverse();
+
+        // create contact array
+        $contactArr = [];
+
+        // add contact to array if not in array
+        foreach($msgs as $msg){
+            if($msg->sender_id == $usrId){
+                if (!in_array($msg->receiver, $contactArr)){
+                    array_push($contactArr, $msg->receiver);
+                }
+            } else{
+                if (!in_array($msg->sender, $contactArr)){
+                    array_push($contactArr, $msg->sender);
+                }
+            }
+        }
 
         return view('profile.index', [
             'categories' => $categories,
             'posts' => $posts,
-            'msgs' => $msgs
+            'contacts' => $contactArr
         ]);
     }
 

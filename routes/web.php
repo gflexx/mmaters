@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\RegisterController;
@@ -72,9 +73,16 @@ Route::post('quiz/answers', [QuestionsController::class, 'showAnswers'])->name('
 
 Route::get('chats/', [ChatController::class, 'index'])->name('show_chats');
 
-Route::get('chat/specialist/{id}', [ChatController::class, 'show_chat'])->name('show_chat')->middleware('auth');
+Route::get('chat/user/{id}', [ChatController::class, 'show_user_chat'])->name('show_chat')->middleware(['auth', 'checkpay']);
 
 Route::post('chat/save', [ChatController::class, 'save_message'])->name('save_message');
+
+
+// payment routes
+
+Route::get('payment/', [PaymentController::class, 'index'])->name('make_payment')->middleware('auth');
+
+Route::post('payment/save', [PaymentController::class, 'save_payment'])->name('save_payment')->middleware('auth');
 
 
 // user related routes
