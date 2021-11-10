@@ -6,7 +6,7 @@
 
     <div class="mt-3">
         <div class="row g-3">
-            <div class="col-3">
+            <div class="col-3 col-md-4">
                 <div class="text-center">
                     <img class="profile-pic" src="{{  asset('avatars/'.auth()->user()->image) }}" alt="">
                 </div>
@@ -60,7 +60,7 @@
                                             <h3 class="post-title"><a  href="{{ route('show_post', $post->id) }}">{{ $post->title }}</a></h3>
                                             <p>{{ $post->created_at->diffForHumans() }}</p>
                                             <p>By: {{ $post->user->username }}</p>
-                                            <p class="card-text">{{ $post->text }}</p>
+                                            <p class="card-text">{{ Str::limit($post->text, 54) }}</p>
                                         </div>
                                     </div>
                                 </div>

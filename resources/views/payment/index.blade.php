@@ -7,7 +7,7 @@
     <h4>Make payment</h4>
 
     <div class="row justify-content-center">
-        <div class="col-7 col-md-4">
+        <div class="col-7 col-md-5">
             <form action="{{ route('save_payment') }}" method="POST">
                 @csrf
                 <h5 class="text-center">Lipa Na Mpesa Online</h5>

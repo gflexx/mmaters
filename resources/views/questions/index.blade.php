@@ -46,9 +46,15 @@
                         </div>
 
                         <div class="mb-1 p-2">
-                            <div class="form-check form-switch ">
-                                <input class="form-check-input large" name="did_heal" type="checkbox" id="flexSwitch">
-                                <label class="form-check-label" for="flexSwitch">Did you heal?</label>
+                            <label class="form-check-label">Did you heal?</label>
+                            <br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="did_heal" id="inlineRadio1" value="1">
+                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="did_heal" id="inlineRadio2" value="0" checked>
+                                <label class="form-check-label" for="inlineRadio2">No</label>
                             </div>
                         </div>
                     </div>
