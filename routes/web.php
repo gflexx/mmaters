@@ -82,8 +82,13 @@ Route::post('chat/save', [ChatController::class, 'save_message'])->name('save_me
 
 Route::get('payment/', [PaymentController::class, 'index'])->name('make_payment')->middleware('auth');
 
+Route::get('payment/wait', [PaymentController::class, 'wait_payment'])->name('wait_payment')->middleware('auth');
+
 Route::post('payment/save', [PaymentController::class, 'save_payment'])->name('save_payment')->middleware('auth');
 
+Route::post('payment/mpesa/validate',[PaymentController::class, 'validation'])->name('mpesa_validation');
+
+Route::post('payment/mpesa/confirm',[PaymentController::class, 'confirmation'])->name('mpesa_confirmation');
 
 // user related routes
 

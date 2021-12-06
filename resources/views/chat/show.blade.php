@@ -39,7 +39,7 @@
                         <p class="mb-1"><small>{{ $msg->created_at->diffForHumans() }}</small></p>
                         <span class="badge rounded-pill bg-primary msg-badge">me</span>
                         <span style="clear: both;"></span>
-                        <span class="badge rounded-pill bg-secondary sender-badge">{{ $msg->receiver->username }}</span>
+                        <span class="badge rounded-pill bg-secondary sender-badge">{{ $msg->sender->username }}</span>
                         <span style="clear: both;"></span>
                     </div>
                 </div>

@@ -7,6 +7,8 @@ use App\Models\Payments;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\MpesaUrlRegister;
+use Gathuku\Mpesa\Mpesa;
 
 class ChatController extends Controller
 {
@@ -14,6 +16,18 @@ class ChatController extends Controller
     {
         $speciliasts = User::where('is_specialist', 1)->get();
         $hasPaid = 0;
+
+        // register mpesa confirm and validate urls
+        $mpesa_registered = MpesaUrlRegister::where('has_registered', 1);
+
+        // check if has been registered if not register
+        if (! $mpesa_registered->exists()){
+            $mpesa = new Mpesa();
+            $registerUrlsResponse=$mpesa->c2bRegisterUrls();
+            $register = MpesaUrlRegister::create([
+                'has_registered' => 1
+            ]);
+        }
 
         // if user logged in check for payments
         if(Auth::check()){

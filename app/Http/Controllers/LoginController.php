@@ -26,9 +26,9 @@ class LoginController extends Controller
 
         // if user not logged in return with status
         if(! Auth::attempt(['username' => $username, 'password' => $pwd], $remember)){
-            return back()->with('status', 'Incorrect email or password');
+            return back()->with('status', 'Incorrect username or password');
         }
-         
+
         // redirect user to profile
         return redirect('profile');
     }
