@@ -4,15 +4,16 @@
 
 <div class="conatiner">
 
-    <div class="mt-3">
+    <div class="mt-3 mb-5">
         <h4 class="text-center">Edit post</h4>
         <div class="row justify-content-center">
             <div class="col-9">
-                <form action="{{ route('add_post') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('save_post_edit') }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="post_id" value="{{ $post->id }}">
                     <div class="mb-3">
                         <label for="title ">Title</label>
-                        <input type="text" name="title" placeholder="Some heading" id="title" class="form-control" value="{{ old('title') }}" required>
+                        <input type="text" name="title" placeholder="Some heading" id="title" class="form-control" value="{{ $post->title }}" required>
                         @error('title')
                             <p class="text-muted">{{ $message }}</p>
                         @enderror
@@ -21,6 +22,7 @@
                     <div class="mb-3">
                         <label for="category">Category</label>
                         <select name="category" id="category" class="form-select" required>
+                            <option selected value="{{ $post->category_id }}">{{ $post->category->title }}</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
                             @endforeach
@@ -33,8 +35,9 @@
 
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Image</label>
-                        <input class="form-control" accept="image/*" value="{{ old('img') }}" name="img" type="file" id="formFile">
-                        @error('img')
+                        <div>Current: <a href="{{ asset($post->image) }}">$post->image</a></div>
+                        <input class="form-control mt-2" accept="image/*" value="{{ old('image') }}"" name="image" type="file" id="formFile">
+                        @error('image')
                             <p class="text-muted">{{ $message }}</p>
                         @enderror
                     </div>
@@ -46,7 +49,7 @@
                         @enderror
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-success">Add Post</button>
+                        <button type="submit" class="btn btn-success">Update Post</button>
                     </div>
                 </form>
             </div>
@@ -55,5 +58,11 @@
     </div>
 
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var text = document.getElementById('text');
+        text.value = '{{ $post->text }}';
+    }, false);
+</script>
 
 @endsection

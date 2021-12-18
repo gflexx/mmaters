@@ -49,7 +49,9 @@ Route::post('posts/create', [PostsController::class, 'add'])->name('add_post');
 
 Route::get('posts/show/{id}', [PostsController::class, 'show'])->name('show_post');
 
+Route::get('posts/edit/{id}', [PostsController::class, 'edit_post'])->name('edit_post');
 
+Route::post('posts/save/edit', [PostsController::class, 'save_edit'])->name('save_post_edit');
 
 // categories
 

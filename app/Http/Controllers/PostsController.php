@@ -64,4 +64,42 @@ class PostsController extends Controller
             'post' => $post
         ]);
     }
+
+    public function edit_post($post){
+        $post = Post::findOrFail($post);
+        $categories = Category::all()->except($post->category->id);
+        return view('posts.edit', [
+            'post' => $post,
+            'categories' => $categories,
+        ]);
+    }
+
+    public function save_edit(Request $request){
+        $post_id = $request->post_id;
+
+        $post = Post::findOrFail($post_id);
+
+        $data = $this->validate($request, [
+            'title' => 'required',
+            'text' => 'required',
+            'category' => 'required',
+        ]);
+
+        if($request->image)
+        {
+            $imgName =  $request->file('image')->getClientOriginalName();
+
+            // save file to storage
+            $imgPath = $request->file('image')->move('posts', $imgName);
+
+            // save image to array
+            $imgArr = ['image' => $imgPath];
+        }
+
+        $post->update(
+            array_merge($data, $imgArr ?? [])
+        );
+
+        return redirect('profile');
+    }
 }
