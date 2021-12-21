@@ -36,6 +36,9 @@
                     <p>Joined: <span class="text-muted">{{ auth()->user()->created_at }}</span></p>
 
                     <a href="{{ route('profile_edit', auth()->user()->id) }}" class="btn btn-info">Update Details</a>
+                    @if(auth()->user()->is_admin)
+                        <a href="{{ route('admin') }}" class="btn btn-secondary">Go to Admin</a>
+                    @endif
 
                     @unless(auth()->user()->is_admin or auth()->user()->is_specialist)
                         <a class="btn btn-success" href="{{ route('show_chats') }}">Talk to a Specialist</a>
@@ -47,7 +50,7 @@
                         <a href="{{ route('create_post') }}" class="btn btn-secondary mb-2">Create Post</a>
                         <div class="mt-4">
                             <h4>My Posts:</h4>
-                            @foreach($posts as $post)
+                            @forelse($posts as $post)
                             <div class="col">
                                 <div class="card mb-2 m-2">
                                     <div class="row">
@@ -65,7 +68,9 @@
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                            @empty
+                                <p class="text-muted mb-2">Mhh.. no Posts yet.</p>
+                            @endforelse
                         </div>
                     @endif
                 </div>

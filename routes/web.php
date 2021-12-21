@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PaymentController;
@@ -117,3 +118,5 @@ Route::get('profile/', [UsersController::class, 'index'])-> name('profile');
 Route::get('profile/edit/{id}', [UsersController::class, 'edit'])->name('profile_edit');
 
 Route::post('profile/edit/{id}/save', [UsersController::class, 'save_edit'])->name('save_edit');
+
+Route::get('admin/', [EmailController::class, 'admin'])->name('admin');

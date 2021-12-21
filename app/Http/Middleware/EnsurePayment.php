@@ -24,7 +24,7 @@ class EnsurePayment
 
         // check if user has payment else redirect to payment page
         // specialist are allowed
-        if ($payments->exists() or $user->is_specialist){
+        if ($payments->exists() or $user->is_specialist or $user->is_admin){
             return $next($request);
         } else{
             return redirect()->route('make_payment');
