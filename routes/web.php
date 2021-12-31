@@ -119,4 +119,12 @@ Route::get('profile/edit/{id}', [UsersController::class, 'edit'])->name('profile
 
 Route::post('profile/edit/{id}/save', [UsersController::class, 'save_edit'])->name('save_edit');
 
+// admin routes
+
 Route::get('admin/', [EmailController::class, 'admin'])->name('admin');
+
+Route::get('admin/confirm/delete', [EmailController::class, 'delete_confirm'])->name('confirm_delete');
+
+Route::post('admin/delete/user', [EmailController::class, 'delete_user'])->name('delete_user');
+
+Route::post('admin/delete/post', [EmailController::class, 'delete_post'])->name('delete_post');

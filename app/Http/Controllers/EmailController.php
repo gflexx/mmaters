@@ -25,4 +25,16 @@ class EmailController extends Controller
             'emails' => $emails,
         ]);
     }
+
+    public function delete_user(Request $request){
+
+    }
+
+    public function delete_post(Request $request){
+
+    }
+
+    public function delete_confirm(Request $request){
+
+    }
 }
