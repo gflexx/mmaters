@@ -36,9 +36,10 @@
                                 Created: {{ $user->created_at }}
                             </div>
                             <div class="col-3">
-                                <form action="" method="post">
+                                <form action="{{ route('confirm_delete') }}" method="post">
                                     @csrf
-                                    <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                    <input type="hidden" name="object_id" value="{{ $user->id }}">
+                                    <input type="hidden" name="type" value="1">
                                     <input class="btn btn-danger btn-sm" type="submit" value="Delete">
                                 </form>
                             </div>
@@ -76,7 +77,12 @@
                                 By: {{ $post->user->username }}
                             </div>
                             <div class="col-3">
-                                <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                <form action="{{ route('confirm_delete') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="object_id" value="{{ $post->id }}">
+                                    <input type="hidden" name="type" value="2">
+                                    <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                </form>
                             </div>
                         </div>
                       @empty

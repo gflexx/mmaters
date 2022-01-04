@@ -123,7 +123,7 @@ Route::post('profile/edit/{id}/save', [UsersController::class, 'save_edit'])->na
 
 Route::get('admin/', [EmailController::class, 'admin'])->name('admin');
 
-Route::get('admin/confirm/delete', [EmailController::class, 'delete_confirm'])->name('confirm_delete');
+Route::post('admin/confirm/delete', [EmailController::class, 'delete_confirm'])->name('confirm_delete');
 
 Route::post('admin/delete/user', [EmailController::class, 'delete_user'])->name('delete_user');
 
