@@ -14,17 +14,18 @@
                 <h5><i class="bi-envelope-fill"></i>    Chats:</h5>
                 <div class="mt-2">
                     <div class="card card-body">
-                        @foreach ($contacts as $contact)
-                        <div style="background-color: whitesmoke;" class="d-flex flex-row mb-2 p-2">
-                            <div>
-                                <img class="contact-image rounded-2" src="{{ asset('avatars/'.$contact->image) }}" alt="">
+                        @forelse ($contacts as $contact)
+                            <div style="background-color: whitesmoke;" class="d-flex flex-row mb-2 p-2">
+                                <div>
+                                    <img class="contact-image rounded-2" src="{{ asset('avatars/'.$contact->image) }}" alt="">
+                                </div>
+                                <div class="ms-4">
+                                    <h6><a href="{{ route('show_chat', $contact->id) }}">{{ $contact->username }}</a></h6>
+                                </div>
                             </div>
-                            <div class="ms-4">
-                                <h6><a href="{{ route('show_chat', $contact->id) }}">{{ $contact->username }}</a></h6>
-                            </div>
-
-                        </div>
-                        @endforeach
+                        @empty
+                            <p>No messages yet</p>
+                        @endforelse
                     </div>
                 </div>
             </div>
@@ -83,7 +84,7 @@
                     <div class="list-group mt-2">
                         @foreach($categories as $category)
                         <li class="list-group-item">
-                            <h5>{{ $category->title }}</h5>
+                            <h5><a style="text-decoration: none;" href="{{ route('show_category', $category->id) }}">{{ $category->title }}</a></h5>
                         </li>
                         @endforeach
                     </div>

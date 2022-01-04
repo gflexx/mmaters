@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="callout border p-5 rounded">
-        <p>You are about to delete {{ $object_type }}: <span class="font-monospace h5">{{ $object_name }}</span> </p>
+        <p>You are about to delete <span class="font-monospace h5">{{ $object_type }}</span> : <span class="font-monospace h5">{{ $object_name }}</span> </p>
         <form class="text-center mt-4"
 
             @if ($type == 1)

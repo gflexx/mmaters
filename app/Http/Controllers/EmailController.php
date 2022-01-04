@@ -31,8 +31,8 @@ class EmailController extends Controller
         $user = User::findOrFail($user_id);
 
         //  delete user messages first
-        $user->sent_messages->delete();
-        $user->received_messages->delete();
+        $user->sent_messages()->delete();
+        $user->received_messages()->delete();
 
         // delete user
         $user->delete();
@@ -50,7 +50,7 @@ class EmailController extends Controller
         $type = $request->type;
         $object_id = $request->object_id;
 
-        // get object type and name
+        // get object type and name`
         if($type == 1){
             $object_type = "User";
             $user = User::findOrFail($object_id);
