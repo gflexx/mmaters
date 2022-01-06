@@ -6,7 +6,7 @@
 
     <div class="mt-3">
         <div class="row g-3">
-            <div class="col-3 col-md-4">
+            <div class="col-10 col-md-4">
                 <div class="text-center">
                     <img class="profile-pic" src="{{  asset('avatars/'.auth()->user()->image) }}" alt="">
                 </div>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-10 col-md-8">
                 <div class="py-2 details mb-3">
                     <h5>Profile:</h5>
                     <p>Username: <span class="text-muted">{{ auth()->user()->username }}</span></p>

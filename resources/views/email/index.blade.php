@@ -4,13 +4,13 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-3">
+        <div class="col-11 col-md-4">
             <div class="text-center">
                 <img class="profile-pic" src="{{  asset('avatars/'.auth()->user()->image) }}" alt="">
                 <p class="mt-3">{{ auth()->user()->username }}</p>
             </div>
         </div>
-        <div class="col">
+        <div class="col-11 col-md-8">
             <h4 class="text-center">Admin</h4>
             <hr>
             <div class="mb-3">
@@ -34,6 +34,15 @@
                             </div>
                             <div class="col">
                                 Created: {{ $user->created_at }}
+                            </div>
+                            <div class="col">
+                                @if ( $user->is_admin )
+                                    <p>Admin</p>
+                                @elseif ( $user->is_specialist )
+                                    <p>Specialist</p>
+                                @else
+                                    <p>User</p>
+                                @endif
                             </div>
                             <div class="col-3">
                                 <form action="{{ route('confirm_delete') }}" method="post">
