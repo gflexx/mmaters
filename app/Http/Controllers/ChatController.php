@@ -54,7 +54,7 @@ class ChatController extends Controller
         $text = $request->text;
 
         Message::create([
-            'sender_id' => $user_id,
+            'user_id' => $user_id,
             'receiver_id' => $receiver_id,
             'message' => $text
         ]);

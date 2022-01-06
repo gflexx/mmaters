@@ -30,9 +30,10 @@ class EmailController extends Controller
         $user_id = $request->object_id;
         $user = User::findOrFail($user_id);
 
-        //  delete user messages first
+        //  delete user messages and comments first
         $user->sent_messages()->delete();
         $user->received_messages()->delete();
+        $user->comments()->delete();
 
         // delete user
         $user->delete();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class PostsController extends Controller
         $posts = Post::all()->sortByDesc("created_at");
 
         return view('posts.index', [
-            'posts' => $posts
+            'posts' => $posts,
         ]);
     }
 
@@ -59,9 +60,14 @@ class PostsController extends Controller
     public function show($post)
     {
         $post = Post::findOrFail($post);
+        $comments = Comment::where('post_id', $post->id)
+            ->get()
+            ->reverse()
+            ->values();
 
         return view('posts.show', [
-            'post' => $post
+            'post' => $post,
+            'comments' => $comments,
         ]);
     }
 

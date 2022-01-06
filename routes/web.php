@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -53,6 +54,10 @@ Route::get('posts/show/{id}', [PostsController::class, 'show'])->name('show_post
 Route::get('posts/edit/{id}', [PostsController::class, 'edit_post'])->name('edit_post');
 
 Route::post('posts/save/edit', [PostsController::class, 'save_edit'])->name('save_post_edit');
+
+// comments
+
+Route::post('post/comment/create', [CommentsController::class, 'save_comment'])->name('save_comment');
 
 // categories
 

@@ -53,3 +53,11 @@
     display: flex;
     width: 5em;
 }
+/* post page */
+.comment{
+    background-color: rgb(184, 182, 182);
+}
+.comment-img{
+    height: 63px;
+    width: 63px;
+}
