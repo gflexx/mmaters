@@ -87,6 +87,9 @@
                             <h5><a style="text-decoration: none;" href="{{ route('show_category', $category->id) }}">{{ $category->title }}</a></h5>
                         </li>
                         @endforeach
+                        @empty($categories)
+                            <p>No categories.</p>
+                        @endempty
                     </div>
                 </div>
                 @endif
