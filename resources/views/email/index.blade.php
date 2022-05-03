@@ -102,12 +102,14 @@
             </div>
             <div class="mb-3">
                 <h5>Email campaign</h5>
-                <a href="" class="btn btn-success mb-2">Create Email Campaign</a>
-                @forelse ($emails as $email)
-
-                @empty
-                <p class="text-muted mb-2">Mhh.. No Email Campaign yet.</p>
-                @endforelse
+                <a href="{{ route('make_email') }}" class="btn btn-success mb-2">Create Email Campaign</a>
+                <div class="card card-body">
+                    @forelse ($emails as $email)
+                        <p>{{ $email->title }}</p>
+                    @empty
+                    <p class="text-muted mb-2">Mhh.. No Email Campaign yet.</p>
+                    @endforelse
+                </div>
             </div>
 
 

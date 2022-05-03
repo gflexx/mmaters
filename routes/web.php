@@ -6,6 +6,7 @@ use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\MailListController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\QuestionsController;
@@ -133,3 +134,10 @@ Route::post('admin/confirm/delete', [EmailController::class, 'delete_confirm'])-
 Route::post('admin/delete/user', [EmailController::class, 'delete_user'])->name('delete_user');
 
 Route::post('admin/delete/post', [EmailController::class, 'delete_post'])->name('delete_post');
+
+
+// email routes
+Route::get('admin/make/email', [MailListController::class, 'make_email'])->name('make_email');
+
+Route::post('admin/save/email', [MailListController::class, 'save_email'])->name('save_email');
+

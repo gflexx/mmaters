@@ -17,7 +17,7 @@
             <div class="col-md-6">
                 <div class="card mb-2 m-2">
                     <div class="row">
-                        <div class="col-3 col-md-4">
+                        <div class="col-4 col-md-4">
                             <a  href="{{ route('show_post', $post->id) }}">
                                 <img src="{{ asset($post->image) }}" alt="" class="home-img img-fluid">
                             </a>

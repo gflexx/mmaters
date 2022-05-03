@@ -5,12 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Email extends Model
+class MailList extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'text',
-        'title'
+        'user_id',
     ];
+
+    public function recipient(){
+        return $this->hasMany(User::class);
+    }
+
+
 }

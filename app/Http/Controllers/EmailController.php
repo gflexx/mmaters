@@ -17,7 +17,7 @@ class EmailController extends Controller
     public function admin(){
         $users = User::all()->except(auth()->user()->id);
         $posts = Post::all();
-        $emails = [];
+        $emails = Email::all();
 
         return view('email.index', [
             'users' => $users,
